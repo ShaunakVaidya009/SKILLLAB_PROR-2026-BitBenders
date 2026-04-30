@@ -4,7 +4,7 @@
 
 > **Project Weight:** 100%  
 > **Team Size:** 4/3 students  
-> **Project Duration:** 8 hours  
+> **Project Duration:** 16 hours  
 > **Total Time Available:** 32 effort-hours per team  
 > **Project Type:** Playful, interactive, technology-based experience
 
@@ -61,10 +61,10 @@ By the final review, this README should clearly show:
 
 ## 1.2 Team Members
 
-| Name           | Primary Role                    | Secondary Role | Strengths Brought to the Project |
-| -------------- | ------------------------------- | -------------- | -------------------------------- |
-| `Gopalakrishnan` | `[Electronics / Coding / App ]` | `Documentation`  | `Documentation, Gift of Gab `|
-| `KAder Shaikh`  | `[Electronics / Fabrication]`   | `[Coding]`     | `Material Handling, Hardware`    |
+| Name                  | Primary Role                    | Secondary Role   | Strengths Brought to the Project |
+| --------------        | ------------------------------- | --------------   | -------------------------------- |
+| `Mrugendra Vasmatkar` | `[Electronics / Coding / App ]` | `Documentation`  | `Documentation, Gift of Gab `|
+| `Jyoti Bagate`        | `[Electronics / Fabrication]`   | `[Coding]`       | `Material Handling, Hardware`    |
 
 ## 1.3 Project Title
 
@@ -91,28 +91,9 @@ In 1–2 paragraphs, explain:
 
 ---
 
-# 2. Philosophy Fit
+# 2. Inspiration
 
-## 2.1 Experience, Not Social Problem
-
-This module does **not** require your project to solve a large social problem.
-
-You are allowed to build:
-
-- toys,
-- games,
-- interactive objects,
-- playful machines,
-- kinetic artifacts,
-- humorous devices,
-- strange but delightful experiences,
-- things that are entertaining to use or watch.
-
-
-
-# 3. Inspiration
-
-## 3.1 References
+## 2.1 References
 
 List what inspired the project.
 
@@ -122,7 +103,7 @@ List what inspired the project.
 |             |                                                                     |                                                                                           |
 |             |                                                                     |                                                                                           |
 
-## 3.2 Original Twist
+## 2.2 Original Twist
 
 What makes your project original?
 
@@ -131,9 +112,9 @@ What makes your project original?
 
 ---
 
-# 4. Project Intent
+# 3. Project Intent
 
-## 4.1 User Journey 
+## 3.1 User Journey 
 
 Describe exactly how a user will use the project.Make it a story
 **Response:**  
@@ -144,29 +125,29 @@ Describe exactly how a user will use the project.Make it a story
 
 ---
 
-# 5. Definition of Success
+# 4. Definition of Success
 
-## 5.1 Definition of “Usable”
+## 4.1 Definition of “Usable”
 
 
 
-## 5.2 Minimum Usable Version
+## 4.2 Minimum Usable Version
 
 What is the smallest version of this project that still delivers the core experience?
 
 **Response:**  
 
 
-## 5.3 Stretch Features
+## 4.3 Stretch Features
 
 What features are nice to have but not essential?
 
 
 ---
 
-# 6. System Overview
+# 5. System Overview
 
-## 6.1 Project Type
+## 5.1 Project Type
 
 Check all that apply.
 
@@ -194,7 +175,7 @@ Check all that apply.
 
 - [ ] Other:
 
-## 6.2 High-Level System Description
+## 5.2 High-Level System Description
 
 Explain how the system works in simple terms.
 
@@ -208,16 +189,16 @@ Include:
 
 **Response:**  
 
-## 6.3 Input / Output Map
+## 5.3 Input / Output Map
 
 | System Part                              | Type            | What It Does                                                               |
 
 
 ---
 
-# 7. Sketches and Visual Planning
+# 6. System Design, Sketches and Visual Planning 
 
-## 7.1 Concept Sketch
+## 6.1 Concept Architecture/sketch/schematic
 
 Add an early sketch of the full idea.
 
@@ -232,7 +213,7 @@ Example:
 
 
 
-## 7.2 Labeled Build Sketch
+## 6.2 Labeled Build Sketch/architecture/flow diagram/algorithm
 
 Add a sketch with labels showing:
 
@@ -246,7 +227,7 @@ Add a sketch with labels showing:
 `[Upload image and link here]`
 <img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/95637f31-b4e7-4427-a9e1-4b63fbeb0ac5" />
 
-## 7.3 Approximate Dimensions
+## 6.3 Approximate Dimensions
 
 | Dimension        | Value   |
 | ---------------- | ------- |
@@ -257,13 +238,13 @@ Add a sketch with labels showing:
 
 ---
 
-# 8. Electronics Planning
+# 7. Electronics Planning
 
-## 8.1 Electronics Used
+## 7.1 Electronics Used
 
 | Component                 | Quantity | Purpose                               |
 | ------------------------- | --------:| ------------------------------------- |
-| `[ESP32]`                 | `1`      | `[Main controller]`                   |
+| `[Raspi/FPGA]`                 | `1`      | `[Main controller]`                   |
 | `[L298N Motor Driver]`    | `1`      | `[Control Motors]`                    |
 | `[BO Motors]`             | `2`      | `[Rotate wheels]`                     |
 | `[Buck Converter]`        | `1`      | `[Power ESP32]`                       |
@@ -271,18 +252,18 @@ Add a sketch with labels showing:
 | `[Projector]`             | `1`      | `[Display obstacles]`                 |
 | `Camera (Webcam / Phone)` | `1`      | `[Tracks car position using markers]` |
 
-## 8.2 Wiring Plan
+## 7.2 Wiring Plan
 
 Describe the main electrical connections.
 
-**Response:**  
-`The ESP32 is connected to the motor driver (L298N) using four GPIO pins (18,19; 22,23) to control motor direction (IN1, IN2, IN3, IN4). Two PWM-capable pins (ENA and ENB; 25 and 26) are connected to control the speed of each motor.
+**sample Response:**  
+`The RASPI is connected to the motor driver (L298N) using four GPIO pins (18,19; 22,23) to control motor direction (IN1, IN2, IN3, IN4). Two PWM-capable pins (ENA and ENB; 25 and 26) are connected to control the speed of each motor.
 
 The motors are connected to the output terminals of the motor driver. The motor driver is powered directly by the battery pack (higher voltage), while the ESP32 receives regulated 5V from the buck converter.
 
 All components share a common ground to ensure stable operation. The projector and camera are connected to the laptop, which handles tracking and game logic separately.`
 
-## 8.3 Circuit Diagram
+## 7.3 Circuit Diagram/architecture diagram
 
 Insert a hand-drawn or software-made circuit diagram.
 
@@ -291,7 +272,7 @@ Insert a hand-drawn or software-made circuit diagram.
 <img width="867" height="1156" alt="" src="" />
 
 
-# 9. Power Plan
+# 7.4. Power Plan
 
 | Question         | Response                                                                                                                                          |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -302,9 +283,9 @@ Insert a hand-drawn or software-made circuit diagram.
 
 ---
 
-# 10. Software Planning
+# 8. Software Planning/
 
-## 10.1 Software Tools
+## 8.1 Software Tools
 
 | Tool / Platform                | Purpose                                        |
 | ------------------------------ | ---------------------------------------------- |
@@ -313,7 +294,7 @@ Insert a hand-drawn or software-made circuit diagram.
 | `[Fusion/Blender/Illustrator]` | `[Prototyping structure]`                      |
 |                                |                                                |
 
-## 10.2 Software Logic
+## 8.2 Software Logic/Algorithm
 
 Describe what the code must do.
 
@@ -330,8 +311,8 @@ Include:
 **Response:**  
 `
 
-- **Startup behavior:**  
-  The ESP32 initializes motor pins, PWM control, and starts a WiFi access point with a web server. The laptop initializes camera input, tracking system, and projection mapping.
+- **Sample Startup behavior:**  
+  The Raspi/FPGA initializes motor pins, PWM control, and starts a WiFi access point with a web server. The laptop initializes camera input, tracking system, and projection mapping.
 - **Input handling:**  
   Movement commands are received from the laptop (pygame sends http requests)
 - **Sensor reading:**  
@@ -345,7 +326,7 @@ Include:
 - **Reset behavior:**  
   If no command is received within a short timeout, the ESP32 stops the motors. The game resets when a level is completed or restarted.`
 
-## 10.3 Code Flowchart
+## 8.3 Code Flowchart
 
 Insert a flowchart showing your code logic.
 
@@ -367,19 +348,19 @@ Suggested sequence:
 
 
 
-# 11. Bill of Materials
+# 9. Bill of Materials
 
-## 11.1 Full BOM
+## 9.1 Full BOM
 
 | Item                             | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec               | Why This Choice?          |
 | -------------------------------- | --------:| ------- | ------------ | --------------:| ----------------------------- | ------------------------- |
-| `[ESP32]`                        | `1`      | `Yes`   | `No`         | `0`            | `38 Pin ESP32`                | `[To control components]` |
+| `[RASPI]`                        | `1`      | `Yes`   | `No`         | `0`            | `38 Pin ESP32`                | `[To control components]` |
 | `[Motor Driver]`                 | `[1]`    | `[Yes]` | `[No]`       | `0`            | `[LN296]`                     | `[To drive both motors]`  |
 | `[DC Motors and wheel]`          | `[2]`    | `[No]`  | `[Yes]`      | `[150]`        | `[BO Motors and 6 cm wheels]` | `[high torque motors]`    |
 | `[Buck Converter]`               | `[1]`    | `[No]`  | `[Yes]`      | `[75]`         |                               |                           |
 | `[Li-ion batteries with holder]` | `[1]`    | `[No]`  | `[Yes]`      | `[200]`        |                               |                           |
 
-## 11.2 Material Justification
+## 9.2 Material Justification
 
 Explain why you selected your main materials and components.
 
@@ -387,7 +368,7 @@ Explain why you selected your main materials and components.
 `DC motors (BO motors) were chosen instead of servos or steppers because the system requires continuous rotation for movement rather than precise angular control (Previously, we were considering using steppers as we were planning on tracking movement on the ESP using its relative position from an origin, but since we're using a camera now, this is not required). A motor driver (L298N) was used to allow bidirectional control and speed variation using PWM.`
 
 
-## 11.3 Items You chose
+## 9.3 Items You chose
 
 | Item                 | Why Needed               | Purchase Link | Latest Safe Date to Procure | Status       |
 | -------------------- | ------------------------ | ------------- | --------------------------- | ------------ |
@@ -395,7 +376,7 @@ Explain why you selected your main materials and components.
 | `Buck Converter`     | `Stable power for ESP32` | `local store` | `before testing`            | `[Received]` |
 | `Li-ion Batteries`   | `Portable power`         | `local store` | `before testing`            | `Recieved`   |
 
-## 11.4 Budget Summary
+## 9.4 Budget Summary
 
 | Budget Item           | Estimated Cost              |
 | --------------------- | ---------------------------:|
@@ -406,7 +387,7 @@ Explain why you selected your main materials and components.
 | Contingency           | `[300]`                     |
 | **Total**             | `[900]`                     |
 
-## 11.5 Budget Reflection
+## 9.5 Budget Reflection
 
 If your cost is too high, what can be simplified, removed, substituted, or shared?
 
@@ -414,9 +395,9 @@ If your cost is too high, what can be simplified, removed, substituted, or share
 
 ---
 
-# 12. Planning the Work
+# 10. Planning the Work
 
-## 12.1 Team Working Agreement
+## 10.1 Team Working Agreement
 
 Write how your team will work together.
 
@@ -431,29 +412,29 @@ Include:
 **Response:**  
 
 
-## 12.2 Task Breakdown
+## 10.2 Task Breakdown
 
 | Task ID | Task                    | Owner    | Estimated Hours | Deadline     | Dependency | Status |
 | ------- | ----------------------- | -------- | ---------------:| ------------ | ---------- | ------ |
 | T1      | `[Finalize concept]`    | `[Both]` | `2`             | `1st April`  | `None`     | `Done` |
 
 
-## 12.3 Responsibility Split
+## 10.3 Responsibility Split
 
-| Area                 | Main Owner | Support Owner |
-| -------------------- | ---------- | ------------- |
-| Concept              | `[Gopal]`  | `[Kader]`    |
-| Electronics          | `[]`       | `[]`     |
-| Coding               | `[]`       | `[]`     |
-| Mechanical build     | `[]`       | `[]`    |
-| Testing              | `[]`       | `[]`    |
-| Documentation        | `[]`       | `[]`     |
+| Area                 | Main Owner     | Support Owner |
+| -------------------- | ----------     | ------------- |
+| Concept              | `[Mrugendra]`  | `[Jyoti]`     |
+| Electronics          | `[]`           | `[]`          |
+| Coding               | `[]`           | `[]`          |
+| Mechanical build     | `[]`           | `[]`          |
+| Testing              | `[]`           | `[]`          |
+| Documentation        | `[]`           | `[]`          |
 
 ---
 
-# 13. 2 hour Milestones
+# 11 hour Milestones
 
-## 13.1 8-hour Plan
+## 11.1 8-hour Plan(tentetively you may set)
 
 ### Bi Hour 1 — Plan and De-risk
 
@@ -497,27 +478,27 @@ Expected outcomes:
 - [x] Documentation completed
 - [x] Final build ready
 
-## 13.2  Update Log
+## 12.2  Update Log
 
-| Week   | Planned Goal   | What Actually Happened | What Changed   | Next Steps     |
+| Days   | Planned Goal   | What Actually Happened | What Changed   | Next Steps     |
 | ------ | -------------- | ---------------------- | -------------- | -------------- |
-| Week 1 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
-| Week 2 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
-| Week 3 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
-| Week 4 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
+| Day 1 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
+| Day 2 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
+| Day 3 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
+| Day 4 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
 
 ---
 
-# 14. Risks and Unknowns
+# 13. Risks and Unknowns
 
-## 14.1 Risk Register
+## 13.1 Risk Register
 
 | Risk                                                            | Type         | Likelihood | Impact   | Mitigation Plan                                                                       | Owner                |
 | --------------------------------------------------------------- | ------------ | ---------- | -------- | ------------------------------------------------------------------------------------- | -------------------- |
 | WiFi connection between laptop and ESP32 becomes unstable       | `Technical`  | `Medium`   | `High`   | Keep ESP32 close, ensure stable power supply, reduce network load, add fail-safe stop | `[Gopal]`           |
 
 
-## 14.2 Biggest Unknown Right Now
+## 13.2 Biggest Unknown Right Now
 
 What is the single biggest uncertainty in your project at this stage?
 
@@ -526,22 +507,22 @@ What is the single biggest uncertainty in your project at this stage?
 
 ---
 
-# 15. Testing 
+# 14. Testing 
 
-## 15.1 Technical Testing Plan
+## 14.1 Technical Testing Plan
 
 | What Needs Testing     | How You Will Test It                                                                 | Success Condition                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
 | `[Wifi connection]`    | `[Check if motor spins via app button]`                                              | `[Both motors accurately respond to wifi signals]`                                                   |
                        |
-## 15.2 Testing and Debugging Log
+## 14.2 Testing and Debugging Log
 
 | Date          | Problem Found                         | Type         | What You Tried                                | Result               | Next Action                                    |
 | ------------- | ------------------------------------- | ------------ | --------------------------------------------- | -------------------- | ---------------------------------------------- |
 | `18th April`  | `Car not balancing properly`          | `Mechanical` | `Add low-friction caster support to one side` | `Worked`             | `improve caster structure`                     |
 
 
-## 15.3 Playtesting Notes
+## 14.3 Playtesting Notes
 
 | Tester      | What They Did                        | What Confused Them                    | What They Enjoyed                         | What You Will Change                          |
 | ----------- | ------------------------------------ | ------------------------------------- | ----------------------------------------- | --------------------------------------------- |
@@ -550,9 +531,9 @@ What is the single biggest uncertainty in your project at this stage?
 
 ---
 
-# 16. Build Documentation
+# 15. Build Documentation
 
-## 16.1 Fabrication Process
+## 15.1 Fabrication Process(if any)
 
 Describe how the project was physically made.
 
@@ -583,7 +564,7 @@ To enhance projection visibility, a controlled dark environment was created usin
 Revisions and Iterations:
 Multiple adjustments were made throughout the process, including refining alignment, improving structural stability, repositioning components, and optimizing the interaction between the physical car and projected environment.`
 
-## 16.2 Build Photos
+## 16 Build Photos
 
 Add photos throughout the project.
 
