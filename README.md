@@ -63,8 +63,10 @@ By the final review, this README should clearly show:
 
 | Name                  | Primary Role                    | Secondary Role   | Strengths Brought to the Project |
 | --------------        | ------------------------------- | --------------   | -------------------------------- |
-| `Mrugendra Vasmatkar` | `[Electronics / Coding / App ]` | `Documentation`  | `Documentation, Gift of Gab `|
-| `Jyoti Bagate`        | `[Electronics / Fabrication]`   | `[Coding]`       | `Material Handling, Hardware`    |
+| `Rutuj Rotkar`        | `[Electronics / Coding / App ]` | `Coding`         | `Documentation, Gift of Gab `    |
+| `Nishant Behera`      | `[Electronics / Fabrication]`   | `Coding`         | `Material Handling, Hardware`    |
+| `Shaunak Vaidya`      | `[Electronics / Fabrication]`   | `Documentation`  | `Material Handling, Hardware`    |
+| `Shrushti Deshpande`  | `[Electronics / Fabrication]`   | `Documentation`  | `Documentation, Gift of Gab`     |
 
 ## 1.3 Project Title
 
@@ -76,7 +78,7 @@ By the final review, this README should clearly show:
 
 ## 1.4 One-Line Pitch
 
-`A projected, fully customizable time portal where engineering education is done through PUBG battlefield in the comfort of our home`
+`Implementing the CORDIC (Coordinate Rotation Digital Computer) algorithm on FPGA is a classic digital design task—very efficient because it avoids multipliers and uses only shifts and adds.`
 
 ## 1.5 Expanded Project Idea
 
@@ -99,9 +101,9 @@ List what inspired the project.
 
 | Source Type | Title / Link                                                        | What Inspired You                                                                         |
 | ----------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `[Video]`   | `https://www.instagram.com/reel/DW4CT7WCDry/?igsh=cXg3dzAxYmdncDBo` | `How projection mapping can be used to create interactive digital + physical experiences` |
-|             |                                                                     |                                                                                           |
-|             |                                                                     |                                                                                           |
+| `[Video]`   | `https://youtu.be/bre7MVlxq7o?si=zgtq4Z5q43SXMmf6` |
+| `[Video]`   | `https://youtu.be/m1e8IbDsIKw?si=I0kVGWWlsmTPd_iA` |                                                               |                                                                                           |
+| `[Paper]`   |                                                                     |                                                                                           |
 
 ## 2.2 Original Twist
 
