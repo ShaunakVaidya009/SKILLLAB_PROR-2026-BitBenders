@@ -20,7 +20,7 @@ After forking this repository, rename it using the format:
 
 ### Example
 
-`SKILLLAB_PROR-2026-AuroWizards`
+`SKILLLAB_PROR-2026-Bit Benders  `
 
 Do not keep the default repository name.
 
@@ -57,7 +57,7 @@ By the final review, this README should clearly show:
 
 ## 1.1 Studio / Group Name
 
-`Project^2`
+`Bit Benders`
 
 ## 1.2 Team Members
 
@@ -70,15 +70,13 @@ By the final review, this README should clearly show:
 
 ## 1.3 Project Title
 
-`"Project Project"`
-
-`(because Project-or)`
+`"Cordic Based 4 - Point FFT and FPGA Implementation"`
 
 <img width="1600" height="1131" alt="image" src="https://github.com/user-attachments/assets/c64bfbd4-b3b7-43d9-83ad-c203a5aa11bc" />
 
 ## 1.4 One-Line Pitch
 
-`A hardware-efficient FFT processor using the CORDIC algorithm to eliminate multipliers and enable real-time signal processing on FPGA.`
+`A hardware-efficient 4-point FFT processor using the CORDIC algorithm to eliminate multipliers and enable real-time frequency-domain signal processing on FPGA.`
 
 ## 1.5 Expanded Project Idea
 
@@ -89,11 +87,8 @@ In 1–2 paragraphs, explain:
 - what technologies are involved.
 
 **Response:**  
-`This project implements a Fast Fourier Transform (FFT) processor using the CORDIC (Coordinate Rotation Digital Computer) algorithm on FPGA. The goal is to replace conventional complex multipliers used in FFT with shift-add based CORDIC operations, making the design more area-efficient and power-efficient.
-
-The system takes a time-domain signal as input and converts it into its frequency-domain representation using FFT butterfly operations. Instead of pre-storing sine and cosine values or using hardware multipliers, the project uses CORDIC in rotation mode to generate twiddle factors dynamically.
-
-This creates an efficient architecture suitable for real-time applications such as Software Defined Radio (SDR), OFDM communication systems, radar signal processing, and image processing.`
+`This project implements a 4-point Fast Fourier Transform (FFT) processor using the CORDIC (Coordinate Rotation Digital Computer) algorithm on an FPGA board. The core innovation is replacing conventional complex multipliers — which are large and power-hungry on FPGAs — with CORDIC-based shift-and-add operations that achieve the same result using only adders and shifters.
+The system accepts four time-domain input samples, passes them through two stages of butterfly operations, and produces four complex frequency-domain output values (X[0] through X[3]). At each butterfly stage, instead of pre-stored lookup tables or DSP multiplier blocks, the CORDIC core iteratively rotates a vector to generate the required twiddle factors (W⁰₄ and W¹₄) on the fly. This makes the design significantly more area-efficient and portable, and is a practical foundation for larger FFT implementations used in OFDM, SDR, and radar signal processing.`
 
 ---
 
@@ -105,8 +100,8 @@ List what inspired the project.
 
 | Source Type | Title / Link                                                        | What Inspired You                                                                         |
 | ----------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `[Video]`   | `https://youtu.be/bre7MVlxq7o?si=zgtq4Z5q43SXMmf6` |
-| `[Video]`   | `https://youtu.be/m1e8IbDsIKw?si=I0kVGWWlsmTPd_iA` |                                                               |                                                                                           |
+| `[Video]`   | `https://youtu.be/bre7MVlxq7o?si=zgtq4Z5q43SXMmf6` | `Visual intuition for how FFT decomposes a signal into frequency components.`
+| `[Video]`   | `https://youtu.be/m1e8IbDsIKw?si=I0kVGWWlsmTPd_iA` | `CORDIC algorithm explained — how rotation replaces multiplication`                                                            |                                                                                           |
 | `[Paper]`   |                                                                     |                                                                                           |
 
 ## 2.2 Original Twist
@@ -114,7 +109,8 @@ List what inspired the project.
 What makes your project original?
 
 **Response:**  
-Unlike conventional FFT implementations that rely on multipliers or large lookup tables, this project uses the CORDIC algorithm to perform all trigonometric and complex multiplication operations. This significantly reduces hardware complexity and makes the system ideal for FPGA-based embedded systems. Additionally, the design is pipelined to improve throughput, enabling near real-time processing.
+`Unlike conventional FFT implementations that rely on hardware DSP multipliers or large sine/cosine lookup tables (ROM), this project uses the CORDIC algorithm in rotation mode to compute all twiddle factor multiplications using only shift-add hardware. This reduces LUT and DSP block usage on the FPGA significantly.
+Additionally, the design is structured to be pipelined by stage, meaning Stage 1 butterfly results can be fed into Stage 2 while Stage 1 processes the next input batch — improving throughput toward near-real-time performance.`
 
 ---
 
@@ -148,16 +144,20 @@ The user can visualize frequency components, analyze signals, and use the output
 What is the smallest version of this project that still delivers the core experience?
 
 **Response:**  
-A basic 4-point FFT implementation using CORDIC rotation mode on FPGA, capable of taking input samples and producing correct frequency-domain output without using hardware multipliers.
+The project is usable when:
 
+`The FPGA correctly accepts 4 input samples and produces 4 frequency-domain output values matching the expected FFT results.
+All butterfly computations use CORDIC rotation — no hardware multiplier primitives (DSP48 blocks) are used for twiddle factor generation.
+The system produces results within a deterministic, bounded number of clock cycles.
+Output can be verified against a MATLAB or Python reference FFT of the same input.`
 ## 4.3 Stretch Features
 
 What features are nice to have but not essential?
-Higher-point FFT (16, 32, 64-point)
-Pipelined architecture
-Real-time signal input (ADC integration)
-Visualization on MATLAB/Python GUI
-SDR integration
+Higher-point FFT (8-point, 16-point) using the same CORDIC butterfly module
+Fully pipelined architecture for continuous throughput (no stall between input batches)
+Real-time signal input via on-board ADC
+Live spectrum visualisation via UART to Python/MATLAB GUI
+SDR integration for real RF signal analysis
 
 ---
 
@@ -202,9 +202,16 @@ Include:
 - output,
 - physical structure,
 - app interaction if any.
-- Input: Digital signal samples
-Processing: FFT computation using butterfly + CORDIC rotation
-Output: Frequency-domain data
+Input: Four fixed-point digital samples (time-domain signal), provided via UART or hardcoded test vectors.
+Processing:
+
+Bit-reversal permutation reorders inputs to [x[0], x[2], x[1], x[3]].
+Stage 1 — Two butterfly units run in parallel: one on the pair (x[0], x[2]) and one on (x[1], x[3]). The CORDIC core generates the required twiddle factors (W⁰₄ = 1 and W¹₄ = −j) via iterative vector rotation.
+Stage 2 — Two more butterfly units combine Stage 1 outputs. CORDIC again handles complex rotation for the bottom butterfly.
+A control FSM sequences the CORDIC iterations and butterfly stages, asserting a done flag when outputs are valid.
+
+Output: Four complex frequency-domain values X[0]–X[3], sent via UART to a PC for verification, or read from FPGA output pins via logic analyser.
+Physical structure: FPGA development board (e.g. Basys3 / Arty / DE10). No mechanical structure required. Connections: USB-UART for data I/O, and optionally a logic analyser on GPIO pins for direct waveform inspection.
 
 Working:
 
@@ -231,8 +238,7 @@ Output Display                             	Output	            Shows frequency-d
 # 6. System Design, Sketches and Visual Planning 
 
 ## 6.1 Concept Architecture/sketch/schematic
-
-Add an early sketch of the full idea.
+The full system follows a two-stage radix-2 DIT (Decimation-In-Time) FFT structure. Each butterfly unit calls the CORDIC module for twiddle factor rotation rather than accessing a ROM or invoking a hardware multiplier.
 
 **Insert image below:**  
 `[Upload image and link here]`
