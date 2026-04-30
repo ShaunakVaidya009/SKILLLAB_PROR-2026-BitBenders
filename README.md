@@ -78,7 +78,7 @@ By the final review, this README should clearly show:
 
 ## 1.4 One-Line Pitch
 
-`Implementing the CORDIC (Coordinate Rotation Digital Computer) algorithm on FPGA is a classic digital design task—very efficient because it avoids multipliers and uses only shifts and adds.`
+`A hardware-efficient FFT processor using the CORDIC algorithm to eliminate multipliers and enable real-time signal processing on FPGA.`
 
 ## 1.5 Expanded Project Idea
 
@@ -89,7 +89,11 @@ In 1–2 paragraphs, explain:
 - what technologies are involved.
 
 **Response:**  
-`A projected and fully customizable time portal can transform engineering education into an immersive PUBG-style battlefield experience from the comfort of home. In this environment, students can learn engineering concepts by entering a virtual battlefield where challenges, obstacles, and missions are designed around real technical problems. Instead of passively studying theory, learners actively apply concepts such as electronics, coding, sensors, robotics, mechanics, and system design to complete missions, solve problems, and progress through different levels. This approach makes engineering education more interactive, engaging, and practical by combining gaming, simulation, and hands-on problem-solving in a familiar and exciting format.`
+`This project implements a Fast Fourier Transform (FFT) processor using the CORDIC (Coordinate Rotation Digital Computer) algorithm on FPGA. The goal is to replace conventional complex multipliers used in FFT with shift-add based CORDIC operations, making the design more area-efficient and power-efficient.
+
+The system takes a time-domain signal as input and converts it into its frequency-domain representation using FFT butterfly operations. Instead of pre-storing sine and cosine values or using hardware multipliers, the project uses CORDIC in rotation mode to generate twiddle factors dynamically.
+
+This creates an efficient architecture suitable for real-time applications such as Software Defined Radio (SDR), OFDM communication systems, radar signal processing, and image processing.`
 
 ---
 
@@ -110,7 +114,7 @@ List what inspired the project.
 What makes your project original?
 
 **Response:**  
-
+Unlike conventional FFT implementations that rely on multipliers or large lookup tables, this project uses the CORDIC algorithm to perform all trigonometric and complex multiplication operations. This significantly reduces hardware complexity and makes the system ideal for FPGA-based embedded systems. Additionally, the design is pipelined to improve throughput, enabling near real-time processing.
 
 ---
 
@@ -120,7 +124,13 @@ What makes your project original?
 
 Describe exactly how a user will use the project.Make it a story
 **Response:**  
+`A user provides a time-domain signal (for example, an audio waveform or RF signal) to the FPGA system. Once the system starts, the FFT processor begins computation.
 
+The input signal is divided into stages using butterfly operations. At each stage, instead of using traditional multipliers, the system uses the CORDIC module to perform vector rotations corresponding to twiddle factors.
+
+As the computation progresses through stages, the signal gets transformed into the frequency domain. The final output is displayed either on a PC (via UART/HDMI) or stored for further processing.
+
+The user can visualize frequency components, analyze signals, and use the output for applications such as filtering, modulation, or spectrum analysis.`
                                                   |
 
 
@@ -138,12 +148,16 @@ Describe exactly how a user will use the project.Make it a story
 What is the smallest version of this project that still delivers the core experience?
 
 **Response:**  
-
+A basic 4-point FFT implementation using CORDIC rotation mode on FPGA, capable of taking input samples and producing correct frequency-domain output without using hardware multipliers.
 
 ## 4.3 Stretch Features
 
 What features are nice to have but not essential?
-
+Higher-point FFT (16, 32, 64-point)
+Pipelined architecture
+Real-time signal input (ADC integration)
+Visualization on MATLAB/Python GUI
+SDR integration
 
 ---
 
@@ -188,12 +202,28 @@ Include:
 - output,
 - physical structure,
 - app interaction if any.
+- Input: Digital signal samples
+Processing: FFT computation using butterfly + CORDIC rotation
+Output: Frequency-domain data
+
+Working:
+
+Input samples are fed into FFT stages
+Butterfly operations are performed
+CORDIC generates sin/cos for twiddle factors
+Complex rotation replaces multiplication
+Final frequency spectrum is generated
 
 **Response:**  
 
 ## 5.3 Input / Output Map
 
-| System Part                              | Type            | What It Does                                                               |
+| System Part                              | Type            | What It Does                                                          System Part	Type	What It Does
+Input Signal                               	Input             	Provides time-domain samples
+FFT Butterfly                              	Process           	Performs addition/subtraction
+CORDIC Core	                                Process            	Generates sin/cos and performs rotation
+Control Unit	                              Process            	Controls stages and iterations
+Output Display                             	Output	            Shows frequency-domain result |
 
 
 ---
