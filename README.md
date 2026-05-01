@@ -63,7 +63,7 @@ By the final review, this README should clearly show:
 
 | Name                  | Primary Role                    | Secondary Role   | Strengths Brought to the Project |
 | --------------        | ------------------------------- | --------------   | -------------------------------- |
-| `Rutuj Rotkar`        | `[Electronics / Coding]`   | `Coding`         | `Documentation, Gift of Gab `    |
+| `Rutuj Rotkar`        | `[Electronics / Coding]`        | `Coding`         | `Documentation, Gift of Gab `    |
 | `Nishant Behera`      | `[Electronics / Fabrication]`   | `Coding`         | `Material Handling, Hardware`    |
 | `Shaunak Vaidya`      | `[Electronics / Fabrication]`   | `Documentation`  | `Material Handling, Hardware`    |
 | `Shrushti Deshpande`  | `[Electronics / Fabrication]`   | `Documentation`  | `Documentation, Gift of Gab`     |
@@ -286,12 +286,6 @@ Add a sketch with labels showing:
 
 ## 6.3 Approximate Dimensions
 
-| Dimension        | Value   |
-| ---------------- | ------- |
-| Length           | `16 cm` |
-| Width            | `16 cm` |
-| Height           | `8 cm`  |
-| Estimated weight | `400 g` |
 
 ---
 
@@ -326,9 +320,9 @@ Insert a hand-drawn or software-made circuit diagram.
 | Question         | Response |
 |------------------|----------|
 
-| Power source     | USB power to FPGA board |
-| Voltage required | 5V (from USB) |
-| Current concerns | Minimal (FPGA internal logic only) |
+| Power source     | USB power to FPGA board                               |
+| Voltage required | 5V (from USB)                                         |
+| Current concerns | Minimal (FPGA internal logic only)                    |
 | Safety concerns  | Ensure proper USB connection and avoid short circuits |
 
 ---
@@ -338,7 +332,7 @@ Insert a hand-drawn or software-made circuit diagram.
 ## 8.1 Software Tools
 
 | Tool / Platform | Purpose |
-|----------------|--------|
+|----------------  |--------|
 | Vivado         | FPGA design, synthesis, simulation |
 | Verilog HDL    | Hardware description |
 | ModelSim/Vivado Simulator | Verification |
@@ -529,13 +523,10 @@ Include:
 
 | Area                 | Main Owner     | Support Owner |
 | -------------------- | ----------     | ------------- |
-| Concept              | `[Mrugendra]`  | `[Jyoti]`     |
-| Electronics          | `[]`           | `[]`          |
-| Coding               | `[]`           | `[]`          |
-| Mechanical build     | `[]`           | `[]`          |
-| Testing              | `[]`           | `[]`          |
-| Documentation        | `[]`           | `[]`          |
-
+| Concept              | `[Shaunak]`    | `[Rutuj]`     |
+| Coding               | `[Rutuj]`      | `[Nishant]`   |
+| Testing              | `[Nishant]`    | `[Shrushti]`  |
+| Documentation        | `[Shrushti]`   | `[Shaunak]`   |
 ---
 
 # 11 hour Milestones
