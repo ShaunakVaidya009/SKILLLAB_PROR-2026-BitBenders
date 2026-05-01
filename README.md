@@ -642,63 +642,56 @@ Suggested images:
 - <img width="960" height="1280" alt="WhatsApp Image 2026-04-24 at 9 46 02 AM (1)" src="images/WhatsApp Image 2026-05-01 at 18.31.46.jpeg" />
 
 
-
-
 # 17. Final Outcome
 
 ## 17.1 Final Description
 
-Describe the final version of your project.
-
 **Response:**  
+The final project implements a 4-point FFT in Verilog without using any IP cores. The design replaces the conventional complex multipliers in the FFT with a CORDIC-based rotation module. The system is divided into two stages: the first stage performs basic butterfly operations, and the second stage applies the twiddle factor using CORDIC rotation followed by final butterfly computations. The design was verified using a testbench with multiple input patterns, and the outputs follow the expected FFT structure with some scaling and fixed-point effects.
 
 
 ## 17.2 What Works Well
 
+- Basic FFT functionality is correct for tested inputs  
+- Butterfly operations produce expected sum and difference outputs  
+- CORDIC rotation successfully replaces complex multiplication  
+- Simulation runs consistently across multiple test cases  
 
 
 ## 17.3 What Still Needs Improvement
 
+- Output scaling is not normalized and varies across test cases  
+- Fixed-point precision introduces noticeable numerical errors  
+- CORDIC latency is not compensated, leading to timing misalignment  
+- Limited to 4-point FFT (not scalable yet)  
+
 
 ## 17.4 What Changed From the Original Plan
 
-How did the project change from the initial idea?
-
-**Response:**  
-
-
----
+Initially, the plan was to implement a more general FFT design and integrate it with system-level applications. During development, the scope was reduced to a 4-point FFT to focus on correctly implementing the CORDIC-based multiplier replacement. Instead of a fully optimized or scalable FFT, the project now emphasizes demonstrating the concept of using CORDIC for twiddle factor computation in a simplified and testable design.
 
 # 18. Reflection
 
 ## 18.1 Team Reflection
 
 What did your team do well?  
-What slowed you down?  
+
+We divided the design into clear modules (FFT stages and CORDIC), which made debugging easier and more structured. We also verified functionality using multiple test cases instead of relying on a single output.
+
+What slowed you down?
+
+Understanding and debugging CORDIC behavior, especially angle handling and scaling, took more time than expected. Fixed-point issues and output mismatches required repeated testing and manual verification.
+
 How well did you manage time, tasks, and responsibilities?
 
-**Response:**  
-
-
-## 18.2 Technical Reflection
-
-
-
-**Response:**  
-
-
-## 18.3 Design Reflection
-
-
-
-**Response:**  
+Tasks were handled in a basic but workable manner, with focus shifting to critical parts when needed. However, time management could have been better, as more time went into debugging than initially planned.
 
 
 ## 18.4 If You Had One More hour
 
 What would you improve next?
 
-**Response:**  
+We would have worked on better accuracy and worked upon the scaling factor. The application chosen for CORDIC could be a better and useful one.
 
 ` `
 
@@ -708,24 +701,22 @@ What would you improve next?
 
 Before submission, confirm that:
 
-- [x] Team details are complete
-- [x] Project description is complete
-- [x] Inspiration sources are included
-- [x] Sketches are added
-- [x] BOM is complete
-- [x] Purchase list is complete
-- [x] Budget summary is complete
+- [ ] Team details are complete
+- [ ] Project description is complete
+- [ ] Inspiration sources are included
+- [ ] Sketches are added
+- [ ] BOM is complete
+- [ ] Purchase list is complete
+- [ ] Budget summary is complete
 - [x] Mechanical planning is documented if applicable
-- [ ] App planning is documented if applicable
-- [x] Code flowchart is added
-- [x] Task breakdown is complete
+- [x] App planning is documented if applicable
+- [ ] Code flowchart is added
+- [ ] Task breakdown is complete
 - [x] Weekly logs are updated
 - [x] Risk register is complete
 - [x] Testing log is updated
-- [x] Playtesting notes are included
 - [x] Build photos are included
-- [x] Final reflection is written
-<img width="1131" height="1600" alt="image" src="" />
+- [ ] Final reflection is written
 
 ---
 
