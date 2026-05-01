@@ -104,7 +104,8 @@ List what inspired the project.
 | ----------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | `[Video]`   | `https://youtu.be/bre7MVlxq7o?si=zgtq4Z5q43SXMmf6` | `Visual intuition for how FFT decomposes a signal into frequency components.`
 | `[Video]`   | `https://youtu.be/m1e8IbDsIKw?si=I0kVGWWlsmTPd_iA` | `CORDIC algorithm explained — how rotation replaces multiplication`                                                            |                                                                                           |
-| `[Paper]`   |                                                                     |                                                                                           |
+| `[Paper]` | ` T. Q. Vinh, T. B. Thanh and D. H. Viet, "FPGA Implementation of Trigonometric Function Using Loop-Optimized Radix-4 CORDIC," 2022 9th NAFOSTED Conference on Information and Computer Science (NICS), Ho Chi Minh City, Vietnam, 2022 ` | Computer science;Performance evaluation;Convolution;Quaternions;Signal processing algorithms;Hardware;Convolutional neural networks;CORDIC;Radix-4 CORDIC;trigonometric function;hardware implementation;FPGA |
+| `[Paper]` |` M. Chinnathambi, N. Bharanidharan and S. Rajaram, "FPGA implementation of fast and area efficient CORDIC algorithm," 2014 International Conference on Communication and Network Technologies, Sivakasi, India, 2014 `| Multiplexing;Pipeline processing;Clocks;Delays;Field programmable gate arrays;Vectors;Algorithm design and analysis;CORDIC algorithm;FPGA;Multiplexer;Pipelining;Unrolled CORDIC;Sine/Cosine |
 
 ## 2.2 Original Twist
 
@@ -309,11 +310,8 @@ No specific wiring connections except power supply to the FPGA Boolean Board and
 
 ## 7.3 Circuit Diagram/architecture diagram
 
-Insert a hand-drawn or software-made circuit diagram.
-
 **Insert image below:**  
 `[Upload image and link here]`
-<img width="867" height="1156" alt="" src="" />
 
 
 # 7.4. Power Plan
@@ -444,8 +442,7 @@ Reset (if triggered) → Go to Start`
 | `[FPGA Boolean Board (Spartan-7)]`| `1`      | `Yes`   | `No`         | `0`            | `Xilinx Spartan-7 FPGA Board`       | `Main hardware platform for FFT implementation` |
 | `[USB Cable]`                    | `1`      | `Yes`   | `No`         | `0`            | `USB-A to Micro USB`                | `Power supply and programming interface`       |
 | `[Laptop / PC]`                  | `1`      | `Yes`   | `No`         | `0`            | `Vivado Installed System`           | `Used for coding, simulation, and synthesis`   |
-| `[Clock Source (On-board)]`      | `1`      | `Yes`   | `No`         | `0`            | `On-board oscillator (~100 MHz)`    | `Provides clock signal for synchronous design` |          |
-| `[LEDs / Output Pins]`           | `4–8`    | `Yes`   | `No`         | `0`            | `On-board LEDs / GPIO pins`         | `Display FFT output or debug signals`          |
+
 
 ## 9.2 Material Justification
 
@@ -580,8 +577,8 @@ Expected outcomes:
 
 | Days   | Planned Goal   | What Actually Happened | What Changed   | Next Steps     |
 | ------ | -------------- | ---------------------- | -------------- | -------------- |
-| Day 1 | `[Project output]` | `[]`         | `[Write here]` | `[Readme]` |
-| Day 2 | `[Readme]` | `[Write here]`         | `[Write here]` | `[Presentation]` |
+| Day 1 | `[Project output]` | `[]`         | `[]` | `[Readme]` |
+| Day 2 | `[Readme]` | `[Write here]`         | `[]` | `[Presentation]` |
 
 
 ---
