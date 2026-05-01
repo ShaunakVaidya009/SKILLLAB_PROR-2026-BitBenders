@@ -63,10 +63,10 @@ By the final review, this README should clearly show:
 
 | Name                  | Primary Role                    | Secondary Role   | Strengths Brought to the Project |
 | --------------        | ------------------------------- | --------------   | -------------------------------- |
-| `Rutuj Rotkar`        | `[Electronics / Coding]`        | `Coding`         | `Documentation, Gift of Gab `    |
-| `Nishant Behera`      | `[Electronics / Fabrication]`   | `Coding`         | `Material Handling, Hardware`    |
-| `Shaunak Vaidya`      | `[Electronics / Fabrication]`   | `Documentation`  | `Material Handling, Hardware`    |
-| `Shrushti Deshpande`  | `[Electronics / Fabrication]`   | `Documentation`  | `Documentation, Gift of Gab`     |
+| `Rutuj Rotkar`        | `Coding`                        | `Documentation`  | `Material Handling, Hardware`    |
+| `Nishant Behera`      | `Coding`                        | `Research`       | `Material Handling, Hardware`    |
+| `Shrushti Deshpande`  | `Research`                      | `Documentation`  | `Documentation`                  |
+| `Shaunak Vaidya`      | `Documentation`                 | `Research`       | `Documentation`                  |
 
 ## 1.3 Project Title
 
@@ -261,15 +261,8 @@ Implemented entirely on FPGA (Spartan-7 Boolean board). No external devices requ
 The full system follows a two-stage radix-2 DIT (Decimation-In-Time) FFT structure. Each butterfly unit calls the CORDIC module for twiddle factor rotation rather than accessing a ROM or invoking a hardware multiplier.
 
 **Insert image below:**  
-`[Upload image and link here]`
+
 <img width="1600" height="1200" alt="image" src="images/WhatsApp Image 2026-05-01 at 18.26.08.jpeg" />
-
-Example:
-
-```md
-
-```
-
 
 
 ## 6.2 Labeled Build Sketch/architecture/flow diagram/algorithm
@@ -283,13 +276,9 @@ Add a sketch with labels showing:
 - output elements.
 
 **Insert image below:**  
-`[Upload image and link here]`
 
-<img width="1600" height="1200" alt="image" src="images/Untitled Diagram.jpg" />
-## 6.3 Approximate Dimensions
+<img width="1600" height="1200" alt="image" src="WhatsApp Image 2026-05-02 at 1.45.30 AM.jpeg" />
 
-
----
 
 # 7. Electronics Planning
 
@@ -298,15 +287,14 @@ Add a sketch with labels showing:
 | Component              | Quantity | Purpose |
 |------------------------|----------|---------|
 | FPGA Boolean Board     | 1        | Main processing unit |
-| Clock Source (On-board)| 1        | Provides system clock |
-| LEDs / Output Pins     | Optional | Display output values |
+
 
 ## 7.2 Wiring Plan
 
 Describe the main electrical connections.
 
-**sample Response:**  
-No specific wiring connections except power supply to the FPGA Boolean Board and connection to Laptop.
+**Response:**  
+No specific wiring connections except connection between FPGA & device. 
 
 ## 7.3 Circuit Diagram/architecture diagram
 
@@ -352,8 +340,6 @@ Include:
 - reset behavior.
 
 **Response:**  
-`
-
 
 - **Startup behavior:**  
   When the FPGA is powered on, the system initializes all internal registers, control signals, and clock. The design remains in an idle state until valid input samples are provided. The clock drives all synchronous operations in the system.
@@ -427,9 +413,7 @@ Wait / Next Input
 Reset (if triggered) → Go to Start`
 
 **Insert image below:**  
-<img width="1600" height="1200" alt="image" src="" />
-<img width="1600" height="1200" alt="image" src="" />
-
+<img width="1600" height="1200" alt="image" src="images/Untitled Diagram.jpg" />
 
 
 
@@ -439,9 +423,9 @@ Reset (if triggered) → Go to Start`
 
 | Item                             | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec                     | Why This Choice?                              |
 | -------------------------------- | --------:| ------- | ------------ | --------------:| ----------------------------------- | --------------------------------------------- |
-| `[FPGA Boolean Board (Spartan-7)]`| `1`      | `Yes`   | `No`         | `0`            | `Xilinx Spartan-7 FPGA Board`       | `Main hardware platform for FFT implementation` |
-| `[USB Cable]`                    | `1`      | `Yes`   | `No`         | `0`            | `USB-A to Micro USB`                | `Power supply and programming interface`       |
-| `[Laptop / PC]`                  | `1`      | `Yes`   | `No`         | `0`            | `Vivado Installed System`           | `Used for coding, simulation, and synthesis`   |
+| `[FPGA Boolean Board (Spartan-7)]`| `1`      | `Yes`   | `No`         | `8500`            | `Xilinx Spartan-7 FPGA Board`       | `Main hardware platform for FFT implementation` |
+| `[USB Cable]`                    | `1`      | `Yes`   | `No`         | `100-150`            | `USB-A to Micro USB`                | `Power supply and programming interface`       |
+
 
 
 ## 9.2 Material Justification
@@ -472,12 +456,12 @@ Overall, the selected components ensure a minimal, cost-effective, and fully sel
 
 | Budget Item           | Estimated Cost              |
 | --------------------- | ---------------------------:|
-| Electronics           | `[0 (Provided in lab)]`     |
+| Electronics           | `[Rs. 8500]`                |
 | Mechanical parts      | `[0]`                       |
 | Fabrication materials | `[0]`                       |
 | Purchased extras      | `[0]`                       |
 | Contingency           | `[0]`                       |
-| **Total**             | `[0]`                       |
+| **Total**             | `[Rs. 8500]`                |
 
 ## 9.5 Budget Reflection
 
@@ -521,9 +505,9 @@ Include:
 
 | Area                 | Main Owner     | Support Owner |
 | -------------------- | ----------     | ------------- |
-| Concept              | `[Shaunak]`    | `[Rutuj]`     |
+| Concept              | `[Nishant]`    | `[Rutuj]`     |
 | Coding               | `[Rutuj]`      | `[Nishant]`   |
-| Testing              | `[Nishant]`    | `[Shrushti]`  |
+| Testing              | `[Rutuj]`      | `[Nishant]`  |
 | Documentation        | `[Shrushti]`   | `[Shaunak]`   |
 ---
 
@@ -577,8 +561,8 @@ Expected outcomes:
 
 | Days   | Planned Goal   | What Actually Happened | What Changed   | Next Steps     |
 | ------ | -------------- | ---------------------- | -------------- | -------------- |
-| Day 1 | `[Project output]` | `[]`         | `[]` | `[Readme]` |
-| Day 2 | `[Readme]` | `[Write here]`         | `[]` | `[Presentation]` |
+| Day 1 | `[Project output]` | `Coding the CORDIC algorithm`         | `Didnt used the prebuilt CORDIC IP` | `[Readme]` |
+| Day 2 | `[Readme]` | `Updated README with images & contents`         | `` | `[Presentation]` |
 
 
 ---
@@ -589,15 +573,16 @@ Expected outcomes:
 
 | Risk                                                            | Type         | Likelihood | Impact   | Mitigation Plan                                                                       | Owner                |
 | --------------------------------------------------------------- | ------------ | ---------- | -------- | ------------------------------------------------------------------------------------- | -------------------- |
-| WiFi connection between laptop and ESP32 becomes unstable       | `Technical`  | `Medium`   | `High`   | Keep ESP32 close, ensure stable power supply, reduce network load, add fail-safe stop | `[Gopal]`           |
-
+| Faulty output of CORDIC algorithm       | `Technical`  | `Medium`   | `High`   | `Occational testbench checks` | 
+| Wrong impleamentation of FFT       | `Technical`  | `Medium`   | `High`   | `Occational testbench checks` |
 
 ## 13.2 Biggest Unknown Right Now
 
 What is the single biggest uncertainty in your project at this stage?
 
 **Response:**  
-
+The single biggest uncertainty is numerical accuracy due to fixed-point arithmetic and CORDIC scaling.
+Since the design uses shift-add operations and approximated scaling instead of floating-point math, small errors can accumulate, especially in FFT outputs, and the exact impact needs further validation against ideal MATLAB results.
 
 ---
 
@@ -644,6 +629,7 @@ Suggested images:
 ## 17.1 Final Description
 
 **Response:**  
+
 The final project implements a 4-point FFT in Verilog without using any IP cores. The design replaces the conventional complex multipliers in the FFT with a CORDIC-based rotation module. The system is divided into two stages: the first stage performs basic butterfly operations, and the second stage applies the twiddle factor using CORDIC rotation followed by final butterfly computations. The design was verified using a testbench with multiple input patterns, and the outputs follow the expected FFT structure with some scaling and fixed-point effects.
 
 
@@ -690,8 +676,6 @@ What would you improve next?
 
 We would have worked on better accuracy and worked upon the scaling factor. The application chosen for CORDIC could be a better and useful one.
 
-` `
-
 ---
 
 # 19. Final Submission Checklist
@@ -717,7 +701,5 @@ Before submission, confirm that:
 
 ---
 
-
----
 
 
