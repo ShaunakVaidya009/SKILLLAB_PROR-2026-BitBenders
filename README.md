@@ -608,21 +608,19 @@ What is the single biggest uncertainty in your project at this stage?
 
 ## 14.1 Technical Testing Plan
 
-| What Needs Testing     | How You Will Test It                                                                 | Success Condition                                                                                    |
-| ---------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| `[Wifi connection]`    | `[Check if motor spins via app button]`                                              | `[Both motors accurately respond to wifi signals]`                                                   |
-                       |
+| What Needs Testing     | How You Will Test It                                                                 | Success Condition                                                                 |
+| ---------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------- |
+| FFT functionality      | Apply known inputs in testbench (e.g., `[1,0,-1,0]`, `[1,1,1,1]`)                   | Output follows expected FFT pattern (real/imag distribution correct)             |
+| Butterfly operations   | Observe intermediate outputs of stage 1                                              | Sum and difference operations behave correctly                                   |
+| Twiddle factor (CORDIC)| Check rotated outputs in stage 2 (e.g., -90° rotation effect in outputs)           | Outputs show correct rotation behavior (swap/sign change as expected)            |
+
+
 ## 14.2 Testing and Debugging Log
 
-| Date          | Problem Found                         | Type         | What You Tried                                | Result               | Next Action                                    |
-| ------------- | ------------------------------------- | ------------ | --------------------------------------------- | -------------------- | ---------------------------------------------- |
-| `30th April`  | `Car not balancing properly`          | `Mechanical` | `Add low-friction caster support to one side` | `Worked`             | `improve caster structure`                     |
-
-
-## 14.3 Playtesting Notes
-
-| Tester      | What They Did                        | What Confused Them                    | What They Enjoyed                         | What You Will Change                          |
-
+| Date        | Problem Found                          | Type     | What You Tried                                      | Result                         | Next Action                              |
+|------------|----------------------------------------|----------|-----------------------------------------------------|--------------------------------|------------------------------------------|
+| 30th April | Unexpected imaginary components in FFT | Logic    | Checked CORDIC rotation direction and angle input   | Outputs consistent but not ideal| Verify angle scaling and rotation logic  |
+| 30th April | Output scaling mismatch (1000 vs 4000) | Numeric  | Compared multiple test cases with different inputs  | Pattern correct, scaling varies | Add normalization or scaling stage       |
 
 
 ---
