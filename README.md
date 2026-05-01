@@ -283,8 +283,8 @@ Add a sketch with labels showing:
 
 **Insert image below:**  
 `[Upload image and link here]`
-<img width="1600" height="1200" alt="image" src="https://github.com/ShaunakVaidya009/SKILLLAB_PROR-2026-BitBenders/commit/506659edbd6078d1dc820e8171a8934486e99e3c#diff-4f367be0bd29bb6cb7460499f04e7a7cdf2561d4f66abc1c67e315c8dc87aee2" />
 
+<img width="1600" height="1200" alt="image" src="" />
 ## 6.3 Approximate Dimensions
 
 
