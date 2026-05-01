@@ -3,10 +3,10 @@
 ## Final Project README
 
 > **Project Weight:** 100%  
-> **Team Size:** 4/3 students  
+> **Team Size:** 4 students  
 > **Project Duration:** 16 hours  
 > **Total Time Available:** 32 effort-hours per team  
-> **Project Type:** Playful, interactive, technology-based experience
+> **Project Type:** Cordic algorithm implementation on boolean board
 
 ---
 
@@ -63,7 +63,7 @@ By the final review, this README should clearly show:
 
 | Name                  | Primary Role                    | Secondary Role   | Strengths Brought to the Project |
 | --------------        | ------------------------------- | --------------   | -------------------------------- |
-| `Rutuj Rotkar`        | `[Electronics / Coding / App ]` | `Coding`         | `Documentation, Gift of Gab `    |
+| `Rutuj Rotkar`        | `[Electronics / Coding]`   | `Coding`         | `Documentation, Gift of Gab `    |
 | `Nishant Behera`      | `[Electronics / Fabrication]`   | `Coding`         | `Material Handling, Hardware`    |
 | `Shaunak Vaidya`      | `[Electronics / Fabrication]`   | `Documentation`  | `Material Handling, Hardware`    |
 | `Shrushti Deshpande`  | `[Electronics / Fabrication]`   | `Documentation`  | `Documentation, Gift of Gab`     |
@@ -87,8 +87,10 @@ In 1–2 paragraphs, explain:
 - what technologies are involved.
 
 **Response:**  
-`This project implements a 4-point Fast Fourier Transform (FFT) processor using the CORDIC (Coordinate Rotation Digital Computer) algorithm on an FPGA board. The core innovation is replacing conventional complex multipliers — which are large and power-hungry on FPGAs — with CORDIC-based shift-and-add operations that achieve the same result using only adders and shifters.
-The system accepts four time-domain input samples, passes them through two stages of butterfly operations, and produces four complex frequency-domain output values (X[0] through X[3]). At each butterfly stage, instead of pre-stored lookup tables or DSP multiplier blocks, the CORDIC core iteratively rotates a vector to generate the required twiddle factors (W⁰₄ and W¹₄) on the fly. This makes the design significantly more area-efficient and portable, and is a practical foundation for larger FFT implementations used in OFDM, SDR, and radar signal processing.`
+
+This project implements a 4-point Fast Fourier Transform (FFT) processor using the CORDIC (Coordinate Rotation Digital Computer) algorithm on an FPGA board. The core innovation is replacing conventional complex multipliers — which are large and power-hungry on FPGAs — with CORDIC-based shift-and-add operations that achieve the same result using only adders and shifters.
+
+The system accepts four time-domain input samples, passes them through two stages of butterfly operations, and produces four complex frequency-domain output values (X[0] through X[3]). At each butterfly stage, instead of pre-stored lookup tables or DSP multiplier blocks, the CORDIC core iteratively rotates a vector to generate the required twiddle factors (W⁰₄ and W¹₄) on the fly. This makes the design significantly more area-efficient and portable, and is a practical foundation for larger FFT implementations used in OFDM, SDR, and radar signal processing.
 
 ---
 
@@ -108,9 +110,10 @@ List what inspired the project.
 
 What makes your project original?
 
-**Response:**  
-`Unlike conventional FFT implementations that rely on hardware DSP multipliers or large sine/cosine lookup tables (ROM), this project uses the CORDIC algorithm in rotation mode to compute all twiddle factor multiplications using only shift-add hardware. This reduces LUT and DSP block usage on the FPGA significantly.
-Additionally, the design is structured to be pipelined by stage, meaning Stage 1 butterfly results can be fed into Stage 2 while Stage 1 processes the next input batch — improving throughput toward near-real-time performance.`
+**Response:** 
+
+Unlike conventional FFT implementations that rely on hardware DSP multipliers or large sine/cosine lookup tables (ROM), this project uses the CORDIC algorithm in rotation mode to compute all twiddle factor multiplications using only shift-add hardware. This reduces LUT and DSP block usage on the FPGA significantly.
+Additionally, the design is structured to be pipelined by stage, meaning Stage 1 butterfly results can be fed into Stage 2 while Stage 1 processes the next input batch — improving throughput toward near-real-time performance.
 
 ---
 
@@ -119,17 +122,16 @@ Additionally, the design is structured to be pipelined by stage, meaning Stage 1
 ## 3.1 User Journey 
 
 Describe exactly how a user will use the project.Make it a story
+
 **Response:**  
-`A user provides a time-domain signal (for example, an audio waveform or RF signal) to the FPGA system. Once the system starts, the FFT processor begins computation.
+A user provides digital input samples (either hardcoded test values or via FPGA switches). Once the system is started using a clock signal, the FPGA begins processing the data.
 
-The input signal is divided into stages using butterfly operations. At each stage, instead of using traditional multipliers, the system uses the CORDIC module to perform vector rotations corresponding to twiddle factors.
+The input samples are passed through butterfly stages of a 4-point FFT. The odd-indexed outputs require multiplication by twiddle factors, which is implemented using the CORDIC algorithm instead of hardware multipliers.
 
-As the computation progresses through stages, the signal gets transformed into the frequency domain. The final output is displayed either on a PC (via UART/HDMI) or stored for further processing.
+The FPGA computes the FFT in a fixed number of clock cycles. The resulting frequency-domain outputs are observed through simulation waveforms (Vivado) or displayed via onboard LEDs or logic analyzer.
 
-The user can visualize frequency components, analyze signals, and use the output for applications such as filtering, modulation, or spectrum analysis.`
-                                                  |
-
-
+This project demonstrates real-time hardware signal processing using efficient FPGA design techniques without any external communication interface.
+                                                  
 
 ---
 
@@ -137,28 +139,38 @@ The user can visualize frequency components, analyze signals, and use the output
 
 ## 4.1 Definition of “Usable”
 
+The project is considered usable when the FPGA-based system correctly performs a 4-point FFT using the CORDIC algorithm and produces valid frequency-domain outputs.
+
+A usable system must:
+- Accept 4 input samples (fixed-point format)
+- Perform correct butterfly operations across both FFT stages
+- Use CORDIC rotation for twiddle factor multiplication (no DSP multipliers)
+- Produce stable and repeatable outputs within a fixed number of clock cycles
+- Show outputs that match expected FFT results (verified via simulation or reference tools like MATLAB/Python)
 
 
 ## 4.2 Minimum Usable Version
 
 What is the smallest version of this project that still delivers the core experience?
 
-**Response:**  
+**Response:** 
+
 The project is usable when:
 
-`The FPGA correctly accepts 4 input samples and produces 4 frequency-domain output values matching the expected FFT results.
-All butterfly computations use CORDIC rotation — no hardware multiplier primitives (DSP48 blocks) are used for twiddle factor generation.
-The system produces results within a deterministic, bounded number of clock cycles.
-Output can be verified against a MATLAB or Python reference FFT of the same input.`
+- The FPGA correctly accepts 4 input samples and produces 4 frequency-domain output values matching expected FFT results.  
+- All butterfly computations use CORDIC rotation — no hardware multiplier primitives (DSP48 blocks) are used.  
+- The system produces results within a deterministic and bounded number of clock cycles.  
+- Outputs can be verified against MATLAB or Python FFT results.
+
 ## 4.3 Stretch Features
 
 What features are nice to have but not essential?
-Higher-point FFT (8-point, 16-point) using the same CORDIC butterfly module
-Fully pipelined architecture for continuous throughput (no stall between input batches)
-Real-time signal input via on-board ADC
-Live spectrum visualisation via UART to Python/MATLAB GUI
-SDR integration for real RF signal analysis
 
+- Higher-point FFT (8-point, 16-point) using the same CORDIC-based architecture.  
+- Fully pipelined design for improved throughput.  
+- Optimized resource utilization (LUT, FF reduction).  
+- Fixed-point precision tuning and error analysis.  
+- On-board visualization using LEDs or external logic analyzer.
 ---
 
 # 5. System Overview
@@ -171,23 +183,27 @@ Check all that apply.
 
 - [ ] Mechanical
 
-- [x] Sensor-based
+- [ ] Sensor-based
 
-- [x] App-connected
+- [ ] App-connected
 
-- [x] Motorized
+- [ ] Motorized
 
 - [ ] Sound-based
 
-- [x] Light-based
+- [ ] Light-based
 
-- [x] Screen/UI-based
+- [ ] Screen/UI-based
 
-- [x] Fabricated structure
+- [ ] Fabricated structure
 
-- [x] Game logic based
+- [ ] Game logic based
 
-- [x] Installation
+- [ ] Installation
+
+- [x] FPGA-based
+      
+- [x] Digital Signal Processing
 
 - [ ] Other:
 
@@ -202,36 +218,39 @@ Include:
 - output,
 - physical structure,
 - app interaction if any.
-Input: Four fixed-point digital samples (time-domain signal), provided via UART or hardcoded test vectors.
-Processing:
-
-Bit-reversal permutation reorders inputs to [x[0], x[2], x[1], x[3]].
-Stage 1 — Two butterfly units run in parallel: one on the pair (x[0], x[2]) and one on (x[1], x[3]). The CORDIC core generates the required twiddle factors (W⁰₄ = 1 and W¹₄ = −j) via iterative vector rotation.
-Stage 2 — Two more butterfly units combine Stage 1 outputs. CORDIC again handles complex rotation for the bottom butterfly.
-A control FSM sequences the CORDIC iterations and butterfly stages, asserting a done flag when outputs are valid.
-
-Output: Four complex frequency-domain values X[0]–X[3], sent via UART to a PC for verification, or read from FPGA output pins via logic analyser.
-Physical structure: FPGA development board (e.g. Basys3 / Arty / DE10). No mechanical structure required. Connections: USB-UART for data I/O, and optionally a logic analyser on GPIO pins for direct waveform inspection.
-
-Working:
-
-Input samples are fed into FFT stages
-Butterfly operations are performed
-CORDIC generates sin/cos for twiddle factors
-Complex rotation replaces multiplication
-Final frequency spectrum is generated
 
 **Response:**  
 
+Input:
+Four fixed-point digital samples (x0, x1, x2, x3) provided as test inputs or via FPGA switches.
+
+Processing:
+The system implements a 4-point Radix-2 FFT using two stages:
+
+Stage 1:
+- Butterfly operations on (x0, x2) and (x1, x3)
+
+Stage 2:
+- Even outputs (X0, X2): computed using only addition and subtraction (no rotation)
+- Odd outputs (X1, X3): require multiplication by twiddle factor
+
+Instead of using multipliers, the design uses a CORDIC module to perform rotation corresponding to twiddle factor multiplication.
+
+Output:
+Four frequency-domain outputs (X0, X1, X2, X3) are generated and verified through simulation waveforms in Vivado or observed on FPGA output pins.
+
+Physical Structure:
+Implemented entirely on FPGA (Spartan-7 Boolean board). No external devices required.
+
 ## 5.3 Input / Output Map
 
-| System Part                              | Type            | What It Does                                                          System Part	Type	What It Does
-Input Signal                               	Input             	Provides time-domain samples
-FFT Butterfly                              	Process           	Performs addition/subtraction
-CORDIC Core	                                Process            	Generates sin/cos and performs rotation
-Control Unit	                              Process            	Controls stages and iterations
-Output Display                             	Output	            Shows frequency-domain result |
-
+| System Part        | Type     | What It Does |
+|-------------------|----------|--------------|
+| Input Samples     | Input    | Provides time-domain data (x0–x3) |
+| Butterfly Unit    | Process  | Performs add/sub operations |
+| CORDIC Core       | Process  | Performs rotation (twiddle multiplication) |
+| Control Logic     | Process  | Controls computation flow |
+| FFT Output        | Output   | Produces frequency-domain result |
 
 ---
 
@@ -280,26 +299,18 @@ Add a sketch with labels showing:
 
 ## 7.1 Electronics Used
 
-| Component                 | Quantity | Purpose                               |
-| ------------------------- | --------:| ------------------------------------- |
-| `[Raspi/FPGA]`                 | `1`      | `[Main controller]`                   |
-| `[L298N Motor Driver]`    | `1`      | `[Control Motors]`                    |
-| `[BO Motors]`             | `2`      | `[Rotate wheels]`                     |
-| `[Buck Converter]`        | `1`      | `[Power ESP32]`                       |
-| `[Li Ion Battery Pack]`   | `2`      | `[Power]`                             |
-| `[Projector]`             | `1`      | `[Display obstacles]`                 |
-| `Camera (Webcam / Phone)` | `1`      | `[Tracks car position using markers]` |
+| Component              | Quantity | Purpose |
+|------------------------|----------|---------|
+| FPGA Boolean Board     | 1        | Main processing unit |
+| Clock Source (On-board)| 1        | Provides system clock |
+| LEDs / Output Pins     | Optional | Display output values |
 
 ## 7.2 Wiring Plan
 
 Describe the main electrical connections.
 
 **sample Response:**  
-`The RASPI is connected to the motor driver (L298N) using four GPIO pins (18,19; 22,23) to control motor direction (IN1, IN2, IN3, IN4). Two PWM-capable pins (ENA and ENB; 25 and 26) are connected to control the speed of each motor.
-
-The motors are connected to the output terminals of the motor driver. The motor driver is powered directly by the battery pack (higher voltage), while the ESP32 receives regulated 5V from the buck converter.
-
-All components share a common ground to ensure stable operation. The projector and camera are connected to the laptop, which handles tracking and game logic separately.`
+No specific wiring connections except power supply to the FPGA Boolean Board and connection to Laptop.
 
 ## 7.3 Circuit Diagram/architecture diagram
 
@@ -312,12 +323,13 @@ Insert a hand-drawn or software-made circuit diagram.
 
 # 7.4. Power Plan
 
-| Question         | Response                                                                                                                                          |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Power source     | `Battery (Li-ion pack)`                                                                                                                           |
-| Voltage required | `~6–8.4V for motors (via driver), stepped down to 5V for ESP32 (buck converter)`                                                                  |
-| Current concerns | `Motors can draw high current under load, which may cause voltage drops affecting ESP32 and WiFi stability`                                       |
-| Safety concerns  | `Avoid over-discharging Li-ion batteries, ensure proper voltage regulation, prevent short circuits, and secure wiring to avoid loose connections` |
+| Question         | Response |
+|------------------|----------|
+
+| Power source     | USB power to FPGA board |
+| Voltage required | 5V (from USB) |
+| Current concerns | Minimal (FPGA internal logic only) |
+| Safety concerns  | Ensure proper USB connection and avoid short circuits |
 
 ---
 
@@ -325,12 +337,12 @@ Insert a hand-drawn or software-made circuit diagram.
 
 ## 8.1 Software Tools
 
-| Tool / Platform                | Purpose                                        |
-| ------------------------------ | ---------------------------------------------- |
-| `[MicroPython]`                | `Control ESP32`                                |
-| `[Python/PyGame/OpenCV]`       | `Track markers, game logic, create projection` |
-| `[Fusion/Blender/Illustrator]` | `[Prototyping structure]`                      |
-|                                |                                                |
+| Tool / Platform | Purpose |
+|----------------|--------|
+| Vivado         | FPGA design, synthesis, simulation |
+| Verilog HDL    | Hardware description |
+| ModelSim/Vivado Simulator | Verification |
+| MATLAB/Python  | Optional FFT verification |
 
 ## 8.2 Software Logic/Algorithm
 
@@ -349,20 +361,41 @@ Include:
 **Response:**  
 `
 
-- **Sample Startup behavior:**  
-  The Raspi/FPGA initializes motor pins, PWM control, and starts a WiFi access point with a web server. The laptop initializes camera input, tracking system, and projection mapping.
+
+- **Startup behavior:**  
+  When the FPGA is powered on, the system initializes all internal registers, control signals, and clock. The design remains in an idle state until valid input samples are provided. The clock drives all synchronous operations in the system.
+
 - **Input handling:**  
-  Movement commands are received from the laptop (pygame sends http requests)
+  Four fixed-point input samples (x0, x1, x2, x3) are either hardcoded in the testbench or provided via FPGA input switches/registers. These inputs represent time-domain signals.
+
 - **Sensor reading:**  
-  The camera continuously captures frames, and OpenCV detects ArUco markers to determine the car’s position and orientation.
+  Not applicable.  
+  (This project does not use sensors; it is a pure digital signal processing implementation on FPGA.)
+
 - **Decision logic:**  
-  The system maps the car’s position into a virtual coordinate system and checks for nearby obstacles or collisions. If movement is valid, the command is allowed; if not, it is blocked or replaced with a feedback action (like a slight shake).
+  The control logic (FSM or sequential logic) determines the stage of FFT computation:
+  - Stage 1: Perform butterfly operations on input pairs (x0, x2) and (x1, x3)
+  - Stage 2:
+    - Even outputs → computed using only addition/subtraction
+    - Odd outputs → require twiddle multiplication using CORDIC rotation
+
+  The system decides whether to route data through:
+  - Direct arithmetic path (no rotation)
+  - CORDIC rotation path (for twiddle factor multiplication)
+
 - **Output behavior:**  
-  The ESP32 drives the motors using PWM signals to control speed and direction. The projector displays the updated game environment, including obstacles, targets, and feedback visuals.
+  After processing through FFT stages, the system produces four outputs (X0, X1, X2, X3) in the frequency domain. These outputs are observed in simulation waveforms or can be mapped to FPGA output pins (LEDs or logic analyzer).
+
 - **Communication logic:**  
-  The laptop sends HTTP requests (e.g., `/forward`, `/left`) to the ESP32 over WiFi. The ESP32 parses these commands and executes motor actions.
+  Not applicable.  
+  (No UART, WiFi, or external communication is used in this project.)
+
 - **Reset behavior:**  
-  If no command is received within a short timeout, the ESP32 stops the motors. The game resets when a level is completed or restarted.`
+  When reset is asserted:
+  - All registers are cleared
+  - Intermediate values are reset to zero
+  - System returns to initial idle state  
+  Once reset is released, the system restarts FFT computation from Stage 1.`
 
 ## 8.3 Code Flowchart
 
@@ -378,6 +411,27 @@ Suggested sequence:
 - trigger output,
 - repeat or reset,
 - error handling.
+`## 8.3 Code Flowchart
+
+Start  
+  ↓  
+Initialize system (clock, registers)  
+  ↓  
+Load input samples (x0, x1, x2, x3)  
+  ↓  
+Stage 1 Butterfly Computation  
+  ↓  
+Stage 2 Decision  
+   ├── Even outputs → Add/Subtract  
+   └── Odd outputs → CORDIC Rotation  
+  ↓  
+Generate FFT Outputs (X0, X1, X2, X3)  
+  ↓  
+Output Valid  
+  ↓  
+Wait / Next Input  
+  ↓  
+Reset (if triggered) → Go to Start`
 
 **Insert image below:**  
 <img width="1600" height="1200" alt="image" src="" />
@@ -390,46 +444,60 @@ Suggested sequence:
 
 ## 9.1 Full BOM
 
-| Item                             | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec               | Why This Choice?          |
-| -------------------------------- | --------:| ------- | ------------ | --------------:| ----------------------------- | ------------------------- |
-| `[RASPI]`                        | `1`      | `Yes`   | `No`         | `0`            | `38 Pin ESP32`                | `[To control components]` |
-| `[Motor Driver]`                 | `[1]`    | `[Yes]` | `[No]`       | `0`            | `[LN296]`                     | `[To drive both motors]`  |
-| `[DC Motors and wheel]`          | `[2]`    | `[No]`  | `[Yes]`      | `[150]`        | `[BO Motors and 6 cm wheels]` | `[high torque motors]`    |
-| `[Buck Converter]`               | `[1]`    | `[No]`  | `[Yes]`      | `[75]`         |                               |                           |
-| `[Li-ion batteries with holder]` | `[1]`    | `[No]`  | `[Yes]`      | `[200]`        |                               |                           |
+| Item                             | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec                     | Why This Choice?                              |
+| -------------------------------- | --------:| ------- | ------------ | --------------:| ----------------------------------- | --------------------------------------------- |
+| `[FPGA Boolean Board (Spartan-7)]`| `1`      | `Yes`   | `No`         | `0`            | `Xilinx Spartan-7 FPGA Board`       | `Main hardware platform for FFT implementation` |
+| `[USB Cable]`                    | `1`      | `Yes`   | `No`         | `0`            | `USB-A to Micro USB`                | `Power supply and programming interface`       |
+| `[Laptop / PC]`                  | `1`      | `Yes`   | `No`         | `0`            | `Vivado Installed System`           | `Used for coding, simulation, and synthesis`   |
+| `[Clock Source (On-board)]`      | `1`      | `Yes`   | `No`         | `0`            | `On-board oscillator (~100 MHz)`    | `Provides clock signal for synchronous design` |          |
+| `[LEDs / Output Pins]`           | `4–8`    | `Yes`   | `No`         | `0`            | `On-board LEDs / GPIO pins`         | `Display FFT output or debug signals`          |
 
 ## 9.2 Material Justification
 
 Explain why you selected your main materials and components.
 
 **Response:**  
-`DC motors (BO motors) were chosen instead of servos or steppers because the system requires continuous rotation for movement rather than precise angular control (Previously, we were considering using steppers as we were planning on tracking movement on the ESP using its relative position from an origin, but since we're using a camera now, this is not required). A motor driver (L298N) was used to allow bidirectional control and speed variation using PWM.`
+`The FPGA Boolean Board (Spartan-7) was selected as the main hardware platform because it provides a flexible and efficient environment for implementing digital signal processing algorithms such as FFT.
+
+The CORDIC-based FFT design requires only basic arithmetic operations (addition, subtraction, and shifting), which map efficiently onto FPGA logic resources (LUTs and flip-flops) without requiring dedicated hardware multipliers (DSP blocks). This makes the design area-efficient and suitable for low-resource FPGA implementations.
+
+The on-board clock source is used to synchronize all operations, ensuring deterministic and reliable execution of the FFT stages. Input switches and output LEDs (or GPIO pins) are used for simple interaction and debugging without requiring external communication modules.
+
+A laptop with Vivado is used for writing Verilog code, performing simulation, synthesis, and verifying the correctness of the FFT outputs. Optional tools like a logic analyzer can be used for deeper signal inspection during debugging.
+
+Overall, the selected components ensure a minimal, cost-effective, and fully self-contained FPGA-based implementation.`
 
 
 ## 9.3 Items You chose
 
 | Item                 | Why Needed               | Purchase Link | Latest Safe Date to Procure | Status       |
 | -------------------- | ------------------------ | ------------- | --------------------------- | ------------ |
-| `BO Motors + Wheels` | `Drive system for car`   | `robu.in`     | `15th April`                | `[Received]` |
-| `Buck Converter`     | `Stable power for ESP32` | `local store` | `before testing`            | `[Received]` |
-| `Li-ion Batteries`   | `Portable power`         | `local store` | `before testing`            | `Recieved`   |
+| `FPGA Boolean Board`          | `Core platform for FFT implementation`       | `Provided`    | `Already available`         | `[Available]` |
+| `USB Cable`                   | `Power and programming interface`            | `Provided`    | `Already available`         | `[Available]` |
+| `Laptop with Vivado`          | `Design, simulation, and synthesis`          | `Provided`    | `Already available`         | `[Available]` |
 
 ## 9.4 Budget Summary
 
 | Budget Item           | Estimated Cost              |
 | --------------------- | ---------------------------:|
-| Electronics           | `[400]`                     |
-| Mechanical parts      | `[200]`                     |
-| Fabrication materials | `[0 (Available on campus)]` |
+| Electronics           | `[0 (Provided in lab)]`     |
+| Mechanical parts      | `[0]`                       |
+| Fabrication materials | `[0]`                       |
 | Purchased extras      | `[0]`                       |
-| Contingency           | `[300]`                     |
-| **Total**             | `[900]`                     |
+| Contingency           | `[0]`                       |
+| **Total**             | `[0]`                       |
 
 ## 9.5 Budget Reflection
 
 If your cost is too high, what can be simplified, removed, substituted, or shared?
 
 **Response:**  
+
+The project is highly cost-efficient since all required hardware components, including the FPGA board and development tools, are already available in the lab. No additional mechanical or electronic components are required.
+
+If cost reduction were necessary, the design could still be implemented on lower-cost FPGA boards or simulated entirely in software for validation. Since the project avoids the use of external peripherals, sensors, and communication modules, it inherently minimizes expenses.
+
+The use of the CORDIC algorithm further reduces hardware resource usage by eliminating the need for multipliers, making the design both cost-effective and resource-efficient.
 
 ---
 
@@ -586,21 +654,7 @@ Include:
 - revisions.
 
 **Response:**  
-`The fabrication process involved designing, manufacturing, assembling, and refining both the physical structure and electronic integration of the system.`
-
-`Design (CAD Modeling):
-The initial model was created using CAD software, where components were designed based on the actual dimensions of the electronic parts. This ensured accurate fitting and minimized errors during assembly.
-Cutting (Laser Cutting):
-The designed parts were fabricated using laser cutting techniques. Sheets were cut precisely according to the CAD model to create the structural base and mounts for components.`
-
-`Components were fixed using adhesives and mechanical supports. Certain parts were intentionally kept modular (not permanently fixed) to allow easy replacement and modification of electronics.
-Surface Finishing:
-Some parts were sanded to smooth rough edges after cutting. Sawdust mixed with adhesive was used to fill gaps and uneven edges, improving structural finish. The final structure was then painted for better aesthetics and durability.`
-
-`Environment Setup (Dark Room Fabrication):
-To enhance projection visibility, a controlled dark environment was created using Z-boards, paper sheets, and bedsheets. This minimized external light interference and improved projection clarity.
-Revisions and Iterations:
-Multiple adjustments were made throughout the process, including refining alignment, improving structural stability, repositioning components, and optimizing the interaction between the physical car and projected environment.`
+`No Fabrication process involved in our project.`
 
 ## 16 Build Photos
 
