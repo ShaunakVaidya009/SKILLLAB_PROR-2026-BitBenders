@@ -261,6 +261,7 @@ The full system follows a two-stage radix-2 DIT (Decimation-In-Time) FFT structu
 
 **Insert image below:**  
 `[Upload image and link here]`
+<img width="1600" height="1200" alt="image" src="images/WhatsApp Image 2026-05-01 at 18.26.08.jpeg" />
 
 Example:
 
@@ -282,7 +283,7 @@ Add a sketch with labels showing:
 
 **Insert image below:**  
 `[Upload image and link here]`
-<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/95637f31-b4e7-4427-a9e1-4b63fbeb0ac5" />
+<img width="1600" height="1200" alt="image" src="https://github.com/ShaunakVaidya009/SKILLLAB_PROR-2026-BitBenders/commit/506659edbd6078d1dc820e8171a8934486e99e3c#diff-4f367be0bd29bb6cb7460499f04e7a7cdf2561d4f66abc1c67e315c8dc87aee2" />
 
 ## 6.3 Approximate Dimensions
 
@@ -579,10 +580,9 @@ Expected outcomes:
 
 | Days   | Planned Goal   | What Actually Happened | What Changed   | Next Steps     |
 | ------ | -------------- | ---------------------- | -------------- | -------------- |
-| Day 1 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
-| Day 2 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
-| Day 3 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
-| Day 4 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
+| Day 1 | `[Project output]` | `[]`         | `[Write here]` | `[Readme]` |
+| Day 2 | `[Readme]` | `[Write here]`         | `[Write here]` | `[Presentation]` |
+
 
 ---
 
@@ -616,14 +616,13 @@ What is the single biggest uncertainty in your project at this stage?
 
 | Date          | Problem Found                         | Type         | What You Tried                                | Result               | Next Action                                    |
 | ------------- | ------------------------------------- | ------------ | --------------------------------------------- | -------------------- | ---------------------------------------------- |
-| `18th April`  | `Car not balancing properly`          | `Mechanical` | `Add low-friction caster support to one side` | `Worked`             | `improve caster structure`                     |
+| `30th April`  | `Car not balancing properly`          | `Mechanical` | `Add low-friction caster support to one side` | `Worked`             | `improve caster structure`                     |
 
 
 ## 14.3 Playtesting Notes
 
 | Tester      | What They Did                        | What Confused Them                    | What They Enjoyed                         | What You Will Change                          |
-| ----------- | ------------------------------------ | ------------------------------------- | ----------------------------------------- | --------------------------------------------- |
-| `Gopal` | `Tried navigating through obstacles` | `Some obstacles ewren't clear enough` | `Liked projection + real car interaction` | `Add a slight red highlight around obstacles` |
+
 
 
 ---
@@ -632,35 +631,17 @@ What is the single biggest uncertainty in your project at this stage?
 
 ## 15.1 Fabrication Process(if any)
 
-Describe how the project was physically made.
 
-Include:
-
-- cutting,
-- 3D printing,
-- assembly,
-- fastening,
-- wiring,
-- finishing,
-- revisions.
 
 **Response:**  
 `No Fabrication process involved in our project.`
 
 ## 16 Build Photos
 
-Add photos throughout the project.
-
 Suggested images:
 
-- early sketch,
-- prototype,
-- electronics testing,
-- mechanism test,
-- app screenshot,
-- final build.
-- <img width="960" height="1280" alt="WhatsApp Image 2026-04-24 at 9 46 02 AM (1)" src="https://github.com/user-attachments/assets/74baa570-5770-483e-be6d-d2f03386e37c" />
-
+- <img width="960" height="1280" alt="WhatsApp Image 2026-04-24 at 9 46 02 AM (1)" src="images/WhatsApp Image 2026-05-01 at 19.57.21.jpeg" />
+- <img width="960" height="1280" alt="WhatsApp Image 2026-04-24 at 9 46 02 AM (1)" src="images/WhatsApp Image 2026-05-01 at 18.31.46.jpeg" />
 
 
 
@@ -703,27 +684,14 @@ How well did you manage time, tasks, and responsibilities?
 
 ## 18.2 Technical Reflection
 
-What did you learn about:
 
-- electronics,
-- coding,
-- mechanisms,
-- fabrication,
-- integration?
 
 **Response:**  
 
 
 ## 18.3 Design Reflection
 
-What did you learn about:
 
-- designing ,
-- delight,
-- clarity,
-- physical interaction,
-- understanding,
-- iteration?
 
 **Response:**  
 
