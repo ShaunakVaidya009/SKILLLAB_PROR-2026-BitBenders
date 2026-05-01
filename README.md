@@ -284,7 +284,7 @@ Add a sketch with labels showing:
 **Insert image below:**  
 `[Upload image and link here]`
 
-<img width="1600" height="1200" alt="image" src="" />
+<img width="1600" height="1200" alt="image" src="images/Untitled Diagram.jpg" />
 ## 6.3 Approximate Dimensions
 
 
